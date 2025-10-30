@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elegant Flora Boutique",
-  description: "Beautiful AI-powered website creation platform",
+  title: "Gentle Hoof Haven - Donkey Sanctuary",
+  description: "A sanctuary dedicated to rescuing and caring for donkeys. Learn about our rescued donkeys, educational programs, and how you can help.",
 };
 
 export default function RootLayout({

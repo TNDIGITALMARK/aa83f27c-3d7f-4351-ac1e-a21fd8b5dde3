@@ -1,59 +1,75 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================
+   DONKEY SANCTUARY DESIGN SYSTEM
+   Extracted from reference design for pixel-perfect replication
+   ============================================ */
 
 :root {
-  /* Pure white background with crisp black text */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
+  /* FONT SYSTEM - Extracted from reference */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
 
-  /* Clean white cards with black text */
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
+  /* COLOR PALETTE - Exact values from reference design */
+  /* Warm cream background - main site background */
+  --background: 35 30% 95%;  /* #F5F0E8 */
+  --foreground: 90 50% 12%;  /* #2D3319 dark green-tinted text */
 
-  /* Popovers with white background */
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
+  /* Card backgrounds - cream with subtle warmth */
+  --card: 35 30% 95%;
+  --card-foreground: 90 50% 12%;
 
-  /* Primary: Black with white text */
-  --primary: 0 0% 0%;
+  /* Popover backgrounds */
+  --popover: 35 30% 95%;
+  --popover-foreground: 90 50% 12%;
+
+  /* Primary brown - saddle brown from reference */
+  --primary: 35 28% 41%;  /* #8B6F47 */
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Light gray background with black text */
-  --secondary: 0 0% 97%;
-  --secondary-foreground: 0 0% 0%;
+  /* Sage green - mission section background */
+  --secondary: 100 12% 65%;  /* #A0AC9D */
+  --secondary-foreground: 90 50% 12%;
 
-  /* Muted: Subtle gray with darker text */
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
+  /* Terracotta - support section background */
+  --accent: 20 32% 57%;  /* #B8826B */
+  --accent-foreground: 0 0% 100%;
 
-  /* Accent: Light gray */
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 0%;
+  /* Muted sage for subtle elements */
+  --muted: 100 12% 65%;
+  --muted-foreground: 90 30% 30%;
 
-  /* Destructive: Clean red */
+  /* Dark charcoal green - footer background */
+  --footer: 100 8% 29%;  /* #4A524A */
+  --footer-foreground: 0 0% 100%;
+
+  /* Destructive states */
   --destructive: 0 70% 50%;
   --destructive-foreground: 0 0% 100%;
 
-  /* Borders: Subtle gray */
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: 0 0% 0%;
+  /* Borders - subtle warm gray */
+  --border: 35 15% 85%;
+  --input: 35 15% 85%;
+  --ring: 35 28% 41%;
 
-  /* Minimal rounded corners */
-  --radius: 0.375rem;
+  /* Border radius - from reference */
+  --radius: 0.75rem;  /* 12px for cards */
+  --radius-full: 9999px;  /* pill buttons */
 
-  /* Sidebar: Clean white with black text */
-  --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 0 0% 0%;
-  --sidebar-primary: 0 0% 0%;
+  /* Spacing system */
+  --section-padding: 5rem;  /* 80px */
+  --container-max: 1200px;
+
+  /* Sidebar (not used in donkey site but keeping for consistency) */
+  --sidebar-background: 35 30% 95%;
+  --sidebar-foreground: 90 50% 12%;
+  --sidebar-primary: 35 28% 41%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 96%;
-  --sidebar-accent-foreground: 0 0% 0%;
-  --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 0%;
+  --sidebar-accent: 100 12% 65%;
+  --sidebar-accent-foreground: 90 50% 12%;
+  --sidebar-border: 35 15% 85%;
+  --sidebar-ring: 35 28% 41%;
 }
 
 .dark {
@@ -168,36 +184,192 @@ All colors MUST be HSL.
   border-color: hsl(var(--border));
 }
 
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  font-feature-settings: "rlig" 1, "calt" 1;
+/* ============================================
+   GLOBAL TYPOGRAPHY & ELEMENT DEFAULTS
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* Minimal, clean typography */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  letter-spacing: -0.025em;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* Clean button styles */
-button {
+/* HEADING STYLES - Extracted from reference */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  color: hsl(var(--foreground));
+  margin: 0;
+}
+
+h1 {
+  font-size: 3rem;  /* 48px - hero heading */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2rem;  /* 32px - section headings */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.5rem;  /* 24px - subsection headings */
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;  /* 20px */
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.125rem;  /* 18px - profile names */
   font-weight: 500;
 }
 
-/* Subtle shadows for depth */
+h6 {
+  font-size: 1rem;  /* 16px */
+  font-weight: 500;
+}
+
+/* PARAGRAPH & TEXT DEFAULTS */
+p {
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+/* BUTTON DEFAULTS - Matching reference design */
+button {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* FORM ELEMENT DEFAULTS */
+input, select, textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 3px hsla(var(--ring) / 0.1);
+}
+
+/* SHADOW SYSTEM - Matching reference */
 .shadow-sm {
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .shadow {
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 0.08);
 }
 
 .shadow-md {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 0.08);
+}
+
+.shadow-lg {
+  box-shadow: 0 8px 24px 0 rgb(0 0 0 / 0.1);
+}
+
+/* CIRCULAR IMAGE TREATMENT - From reference */
+.circular-profile {
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* PILL BUTTON STYLE - From reference */
+.btn-pill {
+  border-radius: var(--radius-full);
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* RESPONSIVE IMAGE CONTAINER */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* SECTION SPACING - From reference */
+.section {
+  padding: var(--section-padding) 2rem;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* MOBILE RESPONSIVE TYPOGRAPHY */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2.5rem;  /* 40px on mobile */
+  }
+
+  h2 {
+    font-size: 1.75rem;  /* 28px on mobile */
+  }
+
+  .section {
+    padding: 3rem 1.5rem;
+  }
 }
